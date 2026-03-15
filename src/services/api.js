@@ -5,3 +5,12 @@ const API = axios.create({
 });
 
 export default API;
+
+
+// import axios from "axios";
+
+// const API = axios.create({
+//   baseURL: "https://ambulance-booking-backend-lafq.onrender.com/api"
+// });
+
+// export default API;
