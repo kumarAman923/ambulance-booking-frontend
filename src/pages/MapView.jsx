@@ -15,19 +15,31 @@ function MapView() {
 
   return (
 
-    <LoadScript googleMapsApiKey="AIzaSyC9Lkiu3ARPf2fDgIK4phS0uEFBI6T6pBY">
+    <div className="container mt-4">
 
-      <GoogleMap
-        mapContainerStyle={containerStyle}
-        center={location}
-        zoom={12}
-      >
+      <div className="card shadow p-3">
 
-        <Marker position={location} />
+        <h4 className="text-center mb-3 fw-bold">
+          Ambulance Location Map
+        </h4>
 
-      </GoogleMap>
+        <LoadScript googleMapsApiKey="AIzaSyC9Lkiu3ARPf2fDgIK4phS0uEFBI6T6pBY">
 
-    </LoadScript>
+          <GoogleMap
+            mapContainerStyle={containerStyle}
+            center={location}
+            zoom={12}
+          >
+
+            <Marker position={location} />
+
+          </GoogleMap>
+
+        </LoadScript>
+
+      </div>
+
+    </div>
 
   );
 

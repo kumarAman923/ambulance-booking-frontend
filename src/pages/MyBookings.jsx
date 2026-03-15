@@ -53,9 +53,9 @@ function MyBookings() {
 
   return (
 
-    <div className="p-10">
+    <div className="container mt-4">
 
-      <h2 className="text-2xl font-bold mb-6">
+      <h2 className="fw-bold mb-4">
         My Bookings
       </h2>
 
@@ -65,21 +65,29 @@ function MyBookings() {
 
       {bookings.map((b) => (
 
-        <div key={b._id} className="border p-4 mb-3 rounded">
+        <div key={b._id} className="card mb-3 shadow-sm">
 
-          <p><b>Hospital:</b> {b.hospital}</p>
+          <div className="card-body">
 
-          <p><b>Status:</b> {b.status}</p>
+            <p className="mb-1">
+              <strong>Hospital:</strong> {b.hospital}
+            </p>
 
-          {/* Cancel Button */}
-          {b.status !== "cancelled" && (
-            <button
-              onClick={() => cancelBooking(b._id)}
-              className="bg-red-500 text-white px-3 py-1 mt-2 rounded"
-            >
-              Cancel Booking
-            </button>
-          )}
+            <p className="mb-2">
+              <strong>Status:</strong> {b.status}
+            </p>
+
+            {/* Cancel Button */}
+            {b.status !== "cancelled" && (
+              <button
+                onClick={() => cancelBooking(b._id)}
+                className="btn btn-danger btn-sm"
+              >
+                Cancel Booking
+              </button>
+            )}
+
+          </div>
 
         </div>
 

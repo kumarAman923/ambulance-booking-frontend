@@ -46,7 +46,7 @@ function Register() {
       console.log(res.data);
 
       setTimeout(() => {
-        navigate("/");
+        navigate("/login");
       }, 1500);
 
     } catch (error) {
@@ -64,25 +64,25 @@ function Register() {
 
   return (
 
-    <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-blue-900 via-blue-800 to-red-600">
+    <div className="container d-flex justify-content-center align-items-center vh-100">
 
-      <div className="bg-white p-8 rounded-xl shadow-xl w-full max-w-md">
+      <div className="card shadow p-4" style={{ width: "420px" }}>
 
         {/* Header */}
-        <div className="text-center mb-6">
+        <div className="text-center mb-4">
 
-          <h2 className="text-2xl font-bold text-gray-800">
+          <h2 className="fw-bold">
             Create Account
           </h2>
 
-          <p className="text-sm text-gray-500">
+          <p className="text-muted">
             Register for ambulance service
           </p>
 
         </div>
 
         {/* Form */}
-        <form onSubmit={handleSubmit} className="space-y-10">
+        <form onSubmit={handleSubmit}>
 
           <input
             type="text"
@@ -90,7 +90,7 @@ function Register() {
             value={form.name}
             onChange={handleChange}
             placeholder="Full Name"
-            className="w-full px-3 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-red-400"
+            className="form-control mb-3"
           />
 
           <input
@@ -99,7 +99,7 @@ function Register() {
             value={form.phone}
             onChange={handleChange}
             placeholder="Phone Number"
-            className="w-full px-3 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-red-400"
+            className="form-control mb-3"
           />
 
           <input
@@ -108,33 +108,28 @@ function Register() {
             value={form.password}
             onChange={handleChange}
             placeholder="Password"
-            className="w-full px-3 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-red-400"
+            className="form-control mb-3"
           />
 
           <button
             type="submit"
             disabled={loading}
-            className="w-full bg-red-600 text-white py-2 rounded-lg font-semibold hover:bg-red-700 transition"
+            className="btn btn-danger w-100"
           >
-
             {loading ? "Registering..." : "Register"}
-
           </button>
 
         </form>
 
         {/* Login link */}
-        <p className="text-2xl font-bold text-white bg-red-500">
-
-          Already have an account?{" "}
-
+        <p className="text-center mt-3">
+          Already have an account?
           <Link
-            to="/Login"
-            className="text-red-600 font-semibold hover:underline"
+            to="/login"
+            className="ms-2 text-decoration-none fw-semibold"
           >
             Login
           </Link>
-
         </p>
 
       </div>

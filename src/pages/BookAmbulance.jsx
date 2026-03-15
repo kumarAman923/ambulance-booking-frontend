@@ -9,26 +9,18 @@ function BookAmbulance() {
   });
 
   const [hospital, setHospital] = useState("");
-
   const [hospitals, setHospitals] = useState([]);
 
   // 📍 fetch hospitals
   useEffect(() => {
 
     const fetchHospitals = async () => {
-
       try {
-
         const res = await API.get("/hospitals");
-
         setHospitals(res.data);
-
       } catch (error) {
-
         console.log(error);
-
       }
-
     };
 
     fetchHospitals();
@@ -43,10 +35,7 @@ function BookAmbulance() {
       const lat = position.coords.latitude;
       const lng = position.coords.longitude;
 
-      setPickup({
-        lat,
-        lng
-      });
+      setPickup({ lat, lng });
 
       alert("Location fetched successfully");
 
@@ -77,13 +66,11 @@ function BookAmbulance() {
       });
 
       alert("Ambulance Booked Successfully");
-
       console.log(res.data);
 
     } catch (error) {
 
       console.log(error);
-
       alert("Booking Failed");
 
     }
@@ -92,71 +79,69 @@ function BookAmbulance() {
 
   return (
 
-    <div className="flex justify-center items-center h-screen bg-gray-100">
+    <div className="container d-flex justify-content-center align-items-center vh-100">
 
-      <form
-        onSubmit={handleSubmit}
-        className="bg-white p-8 rounded shadow-md w-96"
-      >
+      <div className="card shadow p-4" style={{ width: "400px" }}>
 
-        <h2 className="text-2xl font-bold mb-6 text-center">
+        <h2 className="text-center mb-4 fw-bold">
           Book Ambulance
         </h2>
 
-        {/* Location button */}
-        <button
-          type="button"
-          onClick={getLocation}
-          className="bg-blue-500 text-white w-full py-2 mb-4 rounded"
-        >
-          Get Current Location
-        </button>
+        <form onSubmit={handleSubmit}>
 
-        {/* Latitude */}
-        <input
-          type="text"
-          placeholder="Latitude"
-          value={pickup.lat}
-          readOnly
-          className="w-full border p-2 mb-4"
-        />
+          {/* Location button */}
+          <button
+            type="button"
+            onClick={getLocation}
+            className="btn btn-primary w-100 mb-3"
+          >
+            Get Current Location
+          </button>
 
-        {/* Longitude */}
-        <input
-          type="text"
-          placeholder="Longitude"
-          value={pickup.lng}
-          readOnly
-          className="w-full border p-2 mb-4"
-        />
+          {/* Latitude */}
+          <input
+            type="text"
+            placeholder="Latitude"
+            value={pickup.lat}
+            readOnly
+            className="form-control mb-3"
+          />
 
-        {/* Hospital dropdown */}
-        <select
-          onChange={(e) => setHospital(e.target.value)}
-          className="w-full border p-2 mb-4"
-        >
+          {/* Longitude */}
+          <input
+            type="text"
+            placeholder="Longitude"
+            value={pickup.lng}
+            readOnly
+            className="form-control mb-3"
+          />
 
-          <option>Select Hospital</option>
+          {/* Hospital dropdown */}
+          <select
+            onChange={(e) => setHospital(e.target.value)}
+            className="form-select mb-3"
+          >
+            <option>Select Hospital</option>
 
-          {hospitals.map((h) => (
+            {hospitals.map((h) => (
+              <option key={h._id} value={h.name}>
+                {h.name}
+              </option>
+            ))}
 
-            <option key={h._id} value={h.name}>
-              {h.name}
-            </option>
+          </select>
 
-          ))}
+          {/* Submit */}
+          <button
+            type="submit"
+            className="btn btn-danger w-100"
+          >
+            Book Ambulance
+          </button>
 
-        </select>
+        </form>
 
-        {/* Submit */}
-        <button
-          type="submit"
-          className="bg-red-500 text-white w-full py-2 rounded"
-        >
-          Book Ambulance
-        </button>
-
-      </form>
+      </div>
 
     </div>
 

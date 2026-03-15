@@ -32,8 +32,9 @@ function Login() {
 
       // token save
       localStorage.setItem("token", res.data.token);
-        localStorage.setItem("userId", res.data.user._id);
-      // 👇 Login ke baad booking page open hoga
+      localStorage.setItem("userId", res.data.user._id);
+
+      // login ke baad booking page
       navigate("/book");
 
     } catch (error) {
@@ -45,50 +46,53 @@ function Login() {
   };
 
   return (
-    <div className="flex justify-center items-center h-screen bg-gray-100">
 
-      <form
-        onSubmit={handleSubmit}
-        className="bg-white p-8 rounded shadow-md w-96"
-      >
+    <div className="container d-flex justify-content-center align-items-center vh-100">
 
-        <h2 className="text-2xl font-bold mb-6 text-center">
+      <div className="card shadow p-4" style={{ width: "400px" }}>
+
+        <h2 className="text-center mb-4 fw-bold">
           Login
         </h2>
 
-        <input
-          type="text"
-          name="phone"
-          placeholder="Phone"
-          onChange={handleChange}
-          className="w-full border p-2 mb-4"
-        />
+        <form onSubmit={handleSubmit}>
 
-        <input
-          type="password"
-          name="password"
-          placeholder="Password"
-          onChange={handleChange}
-          className="w-full border p-2 mb-4"
-        />
+          <input
+            type="text"
+            name="phone"
+            placeholder="Phone"
+            onChange={handleChange}
+            className="form-control mb-3"
+          />
 
-        <button
-          type="submit"
-          className="bg-green-500 text-white w-full py-2 rounded"
-        >
-          Login
-        </button>
+          <input
+            type="password"
+            name="password"
+            placeholder="Password"
+            onChange={handleChange}
+            className="form-control mb-3"
+          />
 
-        <p className="text-center mt-4">
-          Don't have an account?
-          <Link to="/register" className="text-blue-500 ml-2">
-            Register
-          </Link>
-        </p>
+          <button
+            type="submit"
+            className="btn btn-success w-100"
+          >
+            Login
+          </button>
 
-      </form>
+          <p className="text-center mt-3">
+            Don't have an account?
+            <Link to="/register" className="ms-2">
+              Register
+            </Link>
+          </p>
+
+        </form>
+
+      </div>
 
     </div>
+
   );
 }
 

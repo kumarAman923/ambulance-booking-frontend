@@ -1,63 +1,55 @@
 import { Link } from "react-router-dom";
 
 function Navbar() {
-
   return (
-
-    <nav className="sticky top-0 bg-white shadow-md z-50">
-
-      <div className="max-w-7xl mx-auto flex justify-between items-center px-6 py-4">
+    <nav className="navbar navbar-expand-lg navbar-light bg-white shadow-sm sticky-top">
+      <div className="container">
 
         {/* Logo */}
-        <h1 className="text-xl font-bold text-red-600">
+        <span className="navbar-brand fw-bold text-danger">
           🚑 Ambulance System
-        </h1>
+        </span>
 
-        {/* Navigation Buttons */}
-        <div className="flex gap-6">
+        {/* Toggle Button (Mobile) */}
+        <button
+          className="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarContent"
+        >
+          <span className="navbar-toggler-icon"></span>
+        </button>
 
-          <Link
-            to="/book"
-            className="bg-red-500 text-white px-4 py-2 rounded hover:bg-red-600"
-          >
-            Book Ambulance
-          </Link>
+        {/* Navigation Links */}
+        <div className="collapse navbar-collapse justify-content-end" id="navbarContent">
+          <div className="d-flex gap-2">
 
-          <Link
-            to="/mybookings"
-            className="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600"
-          >
-            My Bookings
-          </Link>
+            <Link to="/book" className="btn btn-danger">
+              Book Ambulance
+            </Link>
 
-          <Link
-            to="/driver"
-            className="bg-green-500 text-white px-4 py-2 rounded hover:bg-green-600"
-          >
-            Driver Dashboard
-          </Link>
+            <Link to="/mybookings" className="btn btn-primary">
+              My Bookings
+            </Link>
 
-          <Link
-            to="/login"
-            className="bg-gray-800 text-white px-4 py-2 rounded hover:bg-gray-900"
-          >
-            Login
-          </Link>
-            <Link
-            to="/Register"
-            className="bg-gray-800 text-white px-4 py-2 rounded hover:bg-gray-900"
-          >
-            Register
-          </Link>
+            <Link to="/driver" className="btn btn-success">
+              Driver Dashboard
+            </Link>
 
+            <Link to="/login" className="btn btn-dark">
+              Login
+            </Link>
+
+            <Link to="/register" className="btn btn-secondary">
+              Register
+            </Link>
+
+          </div>
         </div>
 
       </div>
-
     </nav>
-
   );
-
 }
 
 export default Navbar;

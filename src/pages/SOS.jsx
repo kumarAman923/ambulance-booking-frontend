@@ -38,7 +38,6 @@ function SOS() {
       } catch (error) {
 
         console.log(error);
-
         alert("No ambulance available");
 
       }
@@ -51,11 +50,16 @@ function SOS() {
 
   return (
 
-    <div className="flex justify-center items-center h-screen">
+    <div className="container d-flex justify-content-center align-items-center vh-100">
 
       <button
         onClick={handleSOS}
-        className="bg-red-600 text-white text-3xl px-10 py-6 rounded-full"
+        className="btn btn-danger"
+        style={{
+          fontSize: "2rem",
+          padding: "40px 60px",
+          borderRadius: "50px"
+        }}
       >
 
         {loading ? "Calling Ambulance..." : "SOS 🚑"}
